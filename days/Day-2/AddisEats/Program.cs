@@ -1,71 +1,58 @@
-﻿Console.WriteLine("-------Choose a Mobile network provider------");
+﻿
+Console.WriteLine("Welcome to AddisEats Mobile Topup Service!");
+Console.WriteLine("Enter your name:");
+string userName = Console.ReadLine();
+Console.WriteLine("-------Choose a Mobile network provider------");
 Console.WriteLine("1. Ethiotelecom");
 Console.WriteLine("2. Safaricom");
 
 
 int choice = int.Parse(Console.ReadLine());
+decimal topupAmount= 0;
+decimal bounusAmount = 0;
+Console.WriteLine("Please enter your phone number:");
+int phoneNumber = int.Parse(Console.ReadLine());
+Console.WriteLine("Enter Topup Amount:");
+while (topupAmount <= 0 || topupAmount > 5000)
+{
+    if (decimal.TryParse(Console.ReadLine(), out topupAmount))
+    {
+        if (topupAmount <= 0)
+        {
+            Console.WriteLine("Topup amount must be greater than zero.");
+        }
+        else if (topupAmount > 5000)
+        {
+            Console.WriteLine("Topup amount exceeds the maximum limit of 5000.");
+        }
+        else if (topupAmount > 1000)
+        {
+            topupAmount += 20;
+        }
+    }
+
+}
 
 switch (choice)
 {
     case 1:
-        Console.WriteLine("------You have selected Ethiotelecom.------");
-        Console.WriteLine("Please enter your phone number:");
-        int phoneNumberETH = int.Parse(Console.ReadLine());
-        Console.WriteLine("Enter Topup Amount:");
-        decimal topupAmountETH = 0;
-        while (topupAmountETH <= 0 || topupAmountETH > 5000)
-        {
-            if (decimal.TryParse(Console.ReadLine(), out topupAmountETH))
-            {
-                if (topupAmountETH <= 0)
-                {
-                    Console.WriteLine("Topup amount must be greater than zero.");
-                }
-                else if (topupAmountETH > 5000)
-                {
-                    Console.WriteLine("Topup amount exceeds the maximum limit of 5000.");
-                }
 
-            }
-
-        }
-          decimal bounusAmountETH= topupAmountETH * 5/ 100;
-
-
-        Console.WriteLine($"You have successfully topped up {topupAmountETH+bounusAmountETH} to the phone number {phoneNumberETH}. Thank you for using AddisEats!");
-
+        bounusAmount = topupAmount * 5 /100;
 
         break;
     case 2:
-        Console.WriteLine("------You have selected Safaricom.------");
-        Console.WriteLine("Please enter your phone number:");
-        int phoneNumberSAF = int.Parse(Console.ReadLine());
-        Console.WriteLine("Enter Topup Amount:");
-        decimal topupAmountSAF = 0;
-        while (topupAmountSAF <= 0 || topupAmountSAF > 5000)
-        {
-            if (decimal.TryParse(Console.ReadLine(), out topupAmountSAF))
-            {
-                if (topupAmountSAF <= 0)
-                {
-                    Console.WriteLine("Topup amount must be greater than zero.");
-                }
-                else if (topupAmountSAF > 5000)
-                {
-                    Console.WriteLine("Topup amount exceeds the maximum limit of 5000.");
-                }
 
-            }
-
-        }
-        decimal bounusAmountSAF = topupAmountSAF * 3 / 100;
-
-        Console.WriteLine($"You have successfully topped up {topupAmountSAF+bounusAmountSAF} to the phone number {phoneNumberSAF}. Thank you for using AddisEats!");
-
+        bounusAmount = topupAmount * 3 /100;
         break;
     default:
-        Console.WriteLine("Invalid choice. Please select a valid option.");
+        bounusAmount = 0;
         break;
 }
-
-
+Console.WriteLine("\n");
+Console.WriteLine("******Thank you for using AddisEats Mobile Topup Service!******");
+Console.WriteLine($"Name: {userName}");
+Console.WriteLine($"Topup Amount: {topupAmount:N2} ETB");
+Console.WriteLine($"Bonus Amount: {bounusAmount:N2} ETB");
+Console.WriteLine($"Total Amount: {topupAmount + bounusAmount:N2} ETB");
+Console.WriteLine($"phone Number:{phoneNumber}");
+Console.WriteLine("***************************************************************");

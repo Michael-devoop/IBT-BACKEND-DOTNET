@@ -149,3 +149,26 @@ CalculatePrice(500m, new TenPercentDiscount());
 CalculatePrice(500m, new FiftyBirrDiscount());
 
 /*------------------------------------------*/
+
+void CheckAmount(decimal amount)
+{
+    if (amount <= 0)
+    {
+        throw new ArgumentException("Amount must be greater than zero.");
+    }
+
+    Console.WriteLine($"Valid amount: {amount} ETB");
+}
+
+try
+{
+    CheckAmount(500m); 
+}
+catch (ArgumentException ex)
+{
+    Console.WriteLine($"Error: {ex.Message}");
+}
+finally
+{
+    Console.WriteLine("Finally block always runs!");
+}

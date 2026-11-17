@@ -67,3 +67,11 @@ class Restaurant
         }
     }
 }
+
+/*------------------------------------------*/
+
+record Customer(string Name, string Phone);
+Customer customer1 = new Customer("Michael", "0911234567");
+Customer customer2 = new Customer("Michael", "0911234567");
+
+Console.WriteLine(customer1 == customer2);

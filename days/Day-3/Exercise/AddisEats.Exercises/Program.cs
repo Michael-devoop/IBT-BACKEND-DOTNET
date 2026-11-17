@@ -28,3 +28,26 @@ decimal fee3 = DeliveryFee("Megenagna");
 Console.WriteLine($"Bole delivery fee: {fee1} ETB");
 Console.WriteLine($"Piassa VIP delivery fee: {fee2} ETB");
 Console.WriteLine($"Megenagna delivery fee: {fee3} ETB");
+
+/*------------------------------------------*/
+
+void Describe(int value)
+{
+    Console.WriteLine("Integer method chosen");
+}
+
+void Describe(string value)
+{
+    Console.WriteLine("String method chosen");
+}
+
+void Describe(decimal value)
+{
+    Console.WriteLine("Decimal method chosen");
+}
+
+
+Describe(10);
+Describe("Yod Abyssinia");
+Describe(480.50m);
+

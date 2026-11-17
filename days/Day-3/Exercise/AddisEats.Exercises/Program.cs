@@ -75,3 +75,43 @@ Customer customer1 = new Customer("Michael", "0911234567");
 Customer customer2 = new Customer("Michael", "0911234567");
 
 Console.WriteLine(customer1 == customer2);
+/*------------------------------------------*/
+class Order
+{
+    public string CustomerName { get; set; }
+    public string Area { get; set; }
+    public decimal Total { get; set; }
+    public DateTime OrderDate { get; set; }
+}
+
+
+List<Order> orders = new List<Order>
+{
+    new Order { CustomerName = "Michael", Area = "Bole", Total = 600, OrderDate = DateTime.Now },
+    new Order { CustomerName = "Abebe", Area = "Kazanchis", Total = 800, OrderDate = DateTime.Now.AddDays(-1) },
+    new Order { CustomerName = "Sara", Area = "Bole", Total = 450, OrderDate = DateTime.Now.AddDays(-2) },
+    new Order { CustomerName = "Dawit", Area = "Kazanchis", Total = 700, OrderDate = DateTime.Now.AddDays(-3) }
+};
+
+
+var boleOrders = orders
+    .Where(o => o.Area == "Bole" && o.Total > 500)
+    .ToList();
+
+
+var customerNames = orders
+    .Select(o => o.CustomerName)
+    .OrderBy(name => name)
+    .ToList();
+
+
+var kazanchisRevenue = orders
+    .Where(o => o.Area == "Kazanchis")
+    .Sum(o => o.Total);
+
+
+var page3 = orders
+    .OrderByDescending(o => o.OrderDate)
+    .Skip(20)
+    .Take(10)
+    .ToList();

@@ -115,3 +115,37 @@ var page3 = orders
     .Skip(20)
     .Take(10)
     .ToList();
+/*------------------------------------------*/
+interface IDiscountPolicy
+{
+    decimal Apply(decimal amount);
+}
+
+// 10% discount
+class TenPercentDiscount : IDiscountPolicy
+{
+    public decimal Apply(decimal amount)
+    {
+        return amount * 0.90m;
+    }
+}
+
+// 50 ETB discount
+class FiftyBirrDiscount : IDiscountPolicy
+{
+    public decimal Apply(decimal amount)
+    {
+        return amount - 50m;
+    }
+}
+
+void CalculatePrice(decimal amount, IDiscountPolicy policy)
+{
+    decimal finalPrice = policy.Apply(amount);
+
+    Console.WriteLine($"Final price: {finalPrice:N2} ETB");
+}
+CalculatePrice(500m, new TenPercentDiscount());
+CalculatePrice(500m, new FiftyBirrDiscount());
+
+/*------------------------------------------*/

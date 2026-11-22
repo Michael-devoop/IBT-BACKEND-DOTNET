@@ -34,4 +34,4 @@ public class MenuItemController : ControllerBase
         var result = _menuItemService.GetByRestaurantId(restaurantId, page, pageSize);
         return Ok(result);
     }
-}
+} 

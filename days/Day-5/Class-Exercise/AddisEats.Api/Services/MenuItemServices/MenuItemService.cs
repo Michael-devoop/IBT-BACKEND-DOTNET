@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using AddisEats.Api.Models;
 
 
@@ -35,8 +36,6 @@ public class MenuItemService : IMenuItemService
          .ToList();
 
         return items;
-
-
-
     }
+   
 }
